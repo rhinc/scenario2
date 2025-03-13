@@ -1,0 +1,15 @@
+subject1
+sender1
+body1
+explanation1
+scam1
+subject2
+sender2
+body2
+explanation2
+scam2
+subject3
+sender3
+body3
+explanation3
+scam3
