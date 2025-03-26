@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "difficulty": "easy",
+    "subject": "Jordans For Sale",
+    "sender": "thejordancompany@mail.com",
+    "body": "Hey, you've won free Jordans from our giveaway! All you have to do is put in a small deposit as our system doesn't allow us to mail things for free and they're all yours. Respond within 1 day to claim your reward!",
+    "explanation": "This is a scam email: Shoes are sold by reputable brands, and asking for a deposit is a red flag.",
+    "scam": true
+  },
+  {
+    "id": 2,
+    "difficulty": "easy",
+    "subject": "Urgent: Your Bank Account Is Compromised",
+    "sender": "securealert@bankingupdates.com",
+    "body": "Dear Customer, we’ve detected unusual activity on your bank account. Click the link below to verify your credentials immediately, or your account will be suspended.",
+    "explanation": "This is a scam email: Legitimate banks never use such urgent language or unverified links.",
+    "scam": true
+  },
+  {
+    "id": 3,
+    "difficulty": "easy",
+    "subject": "You've Been Selected For A Government Grant",
+    "sender": "govtgrantdept@cashrelief-now.org",
+    "body": "Congratulations! You've been selected to receive a $5,000 government relief grant. Provide your bank details and a small fee to claim.",
+    "explanation": "This is a scam email: Government grants don't require fees and are not awarded randomly.",
+    "scam": true
+  },
+  {
+    "id": 4,
+    "difficulty": "easy",
+    "subject": "Action Required: Confirm Your New Account Details",
+    "sender": "support@paysecure.com",
+    "body": "We have updated our security policy. Confirm your account details by clicking the secure link below.",
+    "explanation": "This is a scam email: Official updates rarely ask for confirmation via email links.",
+    "scam": true
+  },
+  {
+    "id": 5,
+    "difficulty": "easy",
+    "subject": "Urgent: Update Your Payment Information Now",
+    "sender": "alert@banknotify.com",
+    "body": "Your account has been flagged due to outdated payment information. Update now to avoid service interruption.",
+    "explanation": "This is a scam email: Banks generally do not send such urgent notices via email.",
+    "scam": true
+  },
+  {
+    "id": 6,
+    "difficulty": "easy",
+    "subject": "Exclusive Deal: 50% Off on All Electronics",
+    "sender": "deals@shoponline.com",
+    "body": "Hurry! Limited time offer on all electronics. Shop now and enjoy 50% off.",
+    "explanation": "This email could be a scam: Overly aggressive discount offers may be used to lure customers to fraudulent sites.",
+    "scam": true
+  },
+  {
+    "id": 7,
+    "difficulty": "easy",
+    "subject": "Alert: Unusual Activity Detected on Your Social Media Account",
+    "sender": "security@socialmediaalerts.com",
+    "body": "We've noticed unusual sign-in attempts on your account. Verify your identity using the link below.",
+    "explanation": "This is a scam email: Legitimate social networks will direct you to log in via their official app or website.",
+    "scam": true
+  },
+  {
+    "id": 8,
+    "difficulty": "easy",
+    "subject": "Invitation: Join Our Exclusive VIP Members Club!",
+    "sender": "vipclub@membership.net",
+    "body": "You've been selected for our VIP members club. Join now for free and enjoy exclusive benefits.",
+    "explanation": "This is a scam email: Unsolicited VIP offers are often used to capture personal details.",
+    "scam": true
+  },
+  {
+    "id": 9,
+    "difficulty": "easy",
+    "subject": "Your Order #45892 Has Shipped",
+    "sender": "noreply@onlineshop.com",
+    "body": "Hi there! Your order #45892 has been shipped. Track your parcel using the link provided.",
+    "explanation": "This is a legitimate email: It reflects a standard e-commerce transaction.",
+    "scam": false
+  },
+  {
+    "id": 10,
+    "difficulty": "easy",
+    "subject": "Reminder: Your Subscription Renewal is Due",
+    "sender": "service@streamingnow.com",
+    "body": "Your monthly subscription is due for renewal. Log in to your account to confirm or change your plan.",
+    "explanation": "This is a legitimate email: It is a routine subscription reminder.",
+    "scam": false
+  },
+  {
+    "id": 11,
+    "difficulty": "medium",
+    "subject": "Weekly Newsletter - Tech Trends & Updates",
+    "sender": "news@techdigest.com",
+    "body": "Here’s your weekly roundup of tech news: AI in healthcare, foldable devices, and next-gen processors.",
+    "explanation": "This is a legitimate email: It's sent by a known tech news source and offers updates you subscribed for.",
+    "scam": false
+  },
+  {
+    "id": 12,
+    "difficulty": "medium",
+    "subject": "Invoice #8723 from Reliable Utilities",
+    "sender": "billing@reliableutilities.com",
+    "body": "Please find attached your invoice for this month's utilities. Thank you for your prompt payment.",
+    "explanation": "This is a legitimate email: It correctly follows a billing format from a professional utility service.",
+    "scam": false
+  },
+  {
+    "id": 13,
+    "difficulty": "medium",
+    "subject": "Receipt for Your Recent Purchase",
+    "sender": "sales@onlineretailer.com",
+    "body": "Thank you for your purchase. Attached is your digital receipt. Contact support if needed.",
+    "explanation": "This is a legitimate email: Receipt details are consistent with e-commerce transactions.",
+    "scam": false
+  },
+  {
+    "id": 14,
+    "difficulty": "medium",
+    "subject": "Your Appointment Confirmation from HealthCare Plus",
+    "sender": "appointments@healthcareplus.com",
+    "body": "This is a reminder for your appointment. Reply if you need to reschedule.",
+    "explanation": "This is a legitimate email: Appointment confirmations are standard for healthcare providers.",
+    "scam": false
+  },
+  {
+    "id": 15,
+    "difficulty": "medium",
+    "subject": "Schedule Your Annual Benefits Enrollment",
+    "sender": "hr@companycorp.com",
+    "body": "It’s time for your annual benefits enrollment. Review and select your options before the deadline.",
+    "explanation": "This is a legitimate email: HR-related communications are consistent and routine.",
+    "scam": false
+  },
+  {
+    "id": 16,
+    "difficulty": "medium",
+    "subject": "Limited Time Offer: Free Software Update",
+    "sender": "updates@techsupport.com",
+    "body": "Upgrade your software for free! Click here to download the latest update.",
+    "explanation": "This may be a scam email: Free updates could be used to distribute malware. Always verify at the official site.",
+    "scam": true
+  },
+  {
+    "id": 17,
+    "difficulty": "medium",
+    "subject": "Security Alert: Multiple Login Attempts",
+    "sender": "security@onlineservice.com",
+    "body": "We detected multiple login attempts on your account. Please verify your identity immediately.",
+    "explanation": "This email could be a scam: While security alerts are common, verify through official channels rather than links in email.",
+    "scam": true
+  },
+  {
+    "id": 18,
+    "difficulty": "medium",
+    "subject": "Confirm Your Email to Activate Your New Service",
+    "sender": "no-reply@serviceactivation.com",
+    "body": "Welcome! Confirm your email address by clicking the link to activate your service.",
+    "explanation": "This could be a phishing scam: Confirmation emails should be verified before clicking unfamiliar links.",
+    "scam": true
+  },
+  {
+    "id": 19,
+    "difficulty": "medium",
+    "subject": "New Message Notification from Your Friend",
+    "sender": "notifications@socialhub.com",
+    "body": "You have a new message waiting from a friend. Click here to view the conversation.",
+    "explanation": "This email may be legitimate if you use the service, but sometimes scammers mimic notifications.",
+    "scam": false
+  },
+  {
+    "id": 20,
+    "difficulty": "medium",
+    "subject": "Survey Invitation: Help Us Improve Our Service",
+    "sender": "survey@customerfeedback.com",
+    "body": "We value your input! Complete our short survey to help us improve our service.",
+    "explanation": "While this can be legitimate, such survey invitations can also be phishing attempts. Verify the sender if unsure.",
+    "scam": false
+  },
+  {
+    "id": 21,
+    "difficulty": "hard",
+    "subject": "Account Update Notification",
+    "sender": "updates@mybankonline.com",
+    "body": "Due to recent security updates, we require all customers to review their account details. Please log in to confirm your transactions.",
+    "explanation": "This email is ambiguous: It mimics bank communications, but legitimate banks use secure channels. Verify independently.",
+    "scam": true
+  },
+  {
+    "id": 22,
+    "difficulty": "hard",
+    "subject": "Important: Verify Your Account Information",
+    "sender": "support@yourmoneysecure.net",
+    "body": "There have been changes to your account policies. Verify your personal information to avoid service interruptions.",
+    "explanation": "This email is ambiguous: The sender’s address is slightly off. Always contact your bank via official means.",
+    "scam": true
+  },
+  {
+    "id": 23,
+    "difficulty": "hard",
+    "subject": "Your Account Has Been Upgraded",
+    "sender": "notify@premiumservices.com",
+    "body": "Your account has been upgraded to premium status. Enjoy enhanced features with your new membership.",
+    "explanation": "This email is tricky: It could be genuine or spoofed. Confirm with your provider if you were expecting an upgrade.",
+    "scam": false
+  },
+  {
+    "id": 24,
+    "difficulty": "hard",
+    "subject": "New Activity on Your Account",
+    "sender": "alerts@onlinesolutions.com",
+    "body": "We detected unusual activity on your account. If you did not authorize this, please contact support immediately.",
+    "explanation": "This email is ambiguous: It could be a standard alert or a phishing attempt. Verify via official support channels.",
+    "scam": true
+  },
+  {
+    "id": 25,
+    "difficulty": "hard",
+    "subject": "Action Needed: Confirm Your Account Change",
+    "sender": "notification@serviceupdate.com",
+    "body": "A recent change was made to your account settings. If you did not initiate this change, secure your account immediately.",
+    "explanation": "This email is challenging: It prompts immediate action, a common tactic in phishing attempts.",
+    "scam": true
+  },
+  {
+    "id": 26,
+    "difficulty": "hard",
+    "subject": "Subscription Renewal Notice",
+    "sender": "billing@globalstreaming.com",
+    "body": "Your subscription is up for renewal. Visit our website to manage your subscription and update your payment details.",
+    "explanation": "This email is subtle: It looks like a standard renewal notice, but verify the website URL for authenticity.",
+    "scam": false
+  },
+  {
+    "id": 27,
+    "difficulty": "hard",
+    "subject": "Update Required: Verify Your Device Settings",
+    "sender": "device-support@techworld.com",
+    "body": "Please update your device settings by clicking the secure link to ensure optimal performance.",
+    "explanation": "This email is ambiguous: While device updates are common, scammers may use similar tactics to distribute malware.",
+    "scam": true
+  },
+  {
+    "id": 28,
+    "difficulty": "hard",
+    "subject": "Notice: Policy Changes on Your Account",
+    "sender": "communication@servicecenter.io",
+    "body": "Review our updated privacy policy and confirm your acceptance by logging into your account.",
+    "explanation": "This is ambiguous: Policy change notices can be legitimate but are also used in phishing. Verify by navigating directly to the site.",
+    "scam": false
+  },
+  {
+    "id": 29,
+    "difficulty": "hard",
+    "subject": "Verification Required: Suspicious Activity Detected",
+    "sender": "verify@secureaccess.org",
+    "body": "We noticed some activity that doesn't match your usual patterns. Verify your identity to secure your account.",
+    "explanation": "This email is subtle: It could be a genuine security alert or a sophisticated phishing attempt. Verify through official channels.",
+    "scam": true
+  },
+  {
+    "id": 30,
+    "difficulty": "hard",
+    "subject": "Service Interruption Notice",
+    "sender": "info@cloudprovider.com",
+    "body": "Due to maintenance, your service might experience intermittent issues. No action is required at this time.",
+    "explanation": "This email is ambiguous: It appears routine, but always contact support if you suspect foul play.",
+    "scam": false
+  }
+]

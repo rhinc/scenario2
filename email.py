@@ -1,20 +1,19 @@
+import json
 import random
 
-#make sure textfile is in the same format with no space in between.
-
-#empty list for later use
+# Empty list for storing email objects
 email_list = []
 
-# declare class
+# Declare the Email class
 class Email:
-    def __init__(self,subject,sender,body,explanation,scam):
+    def __init__(self, subject, sender, body, explanation, scam):
         self.subject = subject
         self.sender = sender
         self.body = body
         self.explanation = explanation
         self.scam = scam
 
-    #get methods for data
+    # Getter methods for data
     def get_subject(self):
         return self.subject
     
@@ -30,57 +29,38 @@ class Email:
     def get_scam(self):
         return self.scam
 
-#read data from textfile then store in array(email_list)
 def ReadData():
-    filename = "email.txt"
+    """
+    Reads email data from a JSON file ('email.json') that contains a list of dictionaries.
+    Each dictionary should have keys: "subject", "sender", "body", "explanation", "scam".
+    The 'scam' key is expected to be a boolean (true means scam, false means legit).
+    For compatibility with our answer-checking logic (which expects a string starting with "scam" or "legit"),
+    we convert the boolean value accordingly.
+    """
+    filename = "email.json"
     try:
-        file = open(filename, "r")
-        data = (file.readline()).strip()
-        while data != "":
-            subject = data
-            sender = (file.readline()).strip()
-            body = (file.readline()).strip()
-            explanation = (file.readline()).strip()
-            scam = (file.readline()).strip()
-            email_list.append(Email(subject,sender,body,explanation,scam))
-            data = (file.readline()).strip()
-        file.close()
-    except IOError:
-        print("Error")
+        with open(filename, "r") as file:
+            data = json.load(file)
+            for entry in data:
+                subject = entry.get("subject", "")
+                sender = entry.get("sender", "")
+                body = entry.get("body", "")
+                explanation = entry.get("explanation", "")
+                # Convert boolean to string: "scam" if true, "legit" if false.
+                is_scam = entry.get("scam", True)
+                scam = "scam" if is_scam else "legit"
+                email_list.append(Email(subject, sender, body, explanation, scam))
+    except IOError as e:
+        print("Error reading JSON file:", e)
+    except json.JSONDecodeError as e:
+        print("Error decoding JSON:", e)
     return email_list
 
-
+# Load emails from JSON
 email_list = ReadData()
 
-#create a list for range of email_list
-random_list = list(range(len(email_list)))
-print(random_list)
+# Create a list for random order of email indexes to prevent repetition
+random_indexes = list(range(len(email_list)))
+random.shuffle(random_indexes)
 
-#shuffle the list for random selection of email in array and to prevent repetition of emails
-random.shuffle(random_list)
-for RandomChoice in random_list:
-    print(RandomChoice)
-
-    #stores data to be displayed or compared
-    subjectdisplay = email_list[RandomChoice].get_subject()
-    senderdisplay = email_list[RandomChoice].get_sender()
-    bodydisplay = email_list[RandomChoice].get_body()
-    explanationdisplay = email_list[RandomChoice].get_explanation()
-    scamdisplay = email_list[RandomChoice].get_scam()
-
-    print(subjectdisplay)
-    print(senderdisplay)
-    print(bodydisplay)
-    print(explanationdisplay)
-    print(scamdisplay)
-
-    #give player option to continue or end game
-    UserInput = input("Do you want to continue? (Y/N): ")
-    if UserInput == "N":
-        break
-    elif UserInput == "Y":
-        continue
-    else:
-        print("Invalid Input")
-
-print("End of Program")
+# (Optional debug printing removed for production use)
