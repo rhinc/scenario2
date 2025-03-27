@@ -1,5 +1,5 @@
 import random
-from email import ReadData  # Changed from "from controller import ReadData"
+from email import ReadData 
 from player import Player
 
 class GameModel:
@@ -32,9 +32,11 @@ class GameModel:
             correct = scam_info.startswith("legit")
         else:
             correct = False
+
+        difficulty = current_email.get_difficulty()
         
         if correct:
-            self.player.award()  # Award 100 points if correct.
+            self.player.award(difficulty)  # Award 100 points if correct.
         return correct, current_email.get_explanation()
 
     def next_email(self):

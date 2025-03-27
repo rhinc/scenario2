@@ -212,8 +212,8 @@
     "subject": "New Activity on Your Account",
     "sender": "alerts@onlinesolutions.com",
     "body": "We detected unusual activity on your account. If you did not authorize this, please contact support immediately.",
-    "explanation": "This email is ambiguous: It could be a standard alert or a phishing attempt. Verify via official support channels.",
-    "scam": true
+    "explanation": "This email is upfront: There are no links.",
+    "scam": false
   },
   {
     "id": 25,

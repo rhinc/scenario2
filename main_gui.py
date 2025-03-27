@@ -1,20 +1,21 @@
 import tkinter as tk
 from tkinter import messagebox
 import random
-import controller  # Uses controller functions for progress and filtering
-from model import GameModel  # GameModel loads emails from email.json via ReadData
+import controller  #functions from controller.py for progress and filtering
+from model import GameModel  #GameModel loads emails from email.json via ReadData
 
 class EmailGameGUI(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("MailMaster Game")
-        self.minsize(1200, 600)  # Allow window resizing with a minimum size
+        self.minsize(1200, 600)  
 
-        #initialise progress variables:
+        #initialise progress variables
         self.config_choice = None
-        self.asked = []
+        self.asked = []  #list to keep track of emails shown for the current difficulty
+        self.current_difficulty = "easy"  #initial difficulty
 
-        #show configuration dialog before initialising game
+        #show configuration dialog before initializing game
         self.config_dialog()
         if self.config_choice == "reset":
             controller.reset_progress()
@@ -28,40 +29,37 @@ class EmailGameGUI(tk.Tk):
             self.destroy()
             return
 
-        # if resuming, attempt to load saved progress
+        #if resuming, attempt to load saved progress
         if self.config_choice == "resume":
             progress = controller.load_progress()
             if progress is not None:
                 saved_score = progress.get("score", 0)
                 self.model.player.score = saved_score
                 self.asked = progress.get("asked", [])
-                messagebox.showinfo("Resuming Game", f"Your current score is {saved_score}.")
+                self.current_difficulty = progress.get("difficulty", "easy")
+                messagebox.showinfo("Resuming Game", f"Your current score is {saved_score}.\nCurrent difficulty: {self.current_difficulty.capitalize()}")
             else:
                 messagebox.showinfo("Info", "No saved progress found. Starting a new game.")
                 self.model.player.score = 0
                 self.asked = []
+                self.current_difficulty = "easy"
         else:
             self.model.player.score = 0
             self.asked = []
+            self.current_difficulty = "easy"
             controller.reset_progress()
 
         #retrieve the complete email list from the model
         self.all_emails = self.model.emails
-        
-        #use controller functions to filter emails by difficulty
-        self.easy_emails   = controller.select_easy_emails(self.all_emails)
-        self.medium_emails = controller.select_medium_emails(self.all_emails)
-        self.hard_emails   = controller.select_hard_emails(self.all_emails)
 
-        #build UI components
+        #build the UI components
         self.create_widgets()
         self.load_current_email()
 
     def config_dialog(self):
         dialog = tk.Toplevel(self)
         dialog.title("Game Configuration")
-        dialog.grab_set()  # make the dialog modal
-        
+        dialog.grab_set()  # Make the dialog modal.
         tk.Label(dialog, text="Select an option:").pack(pady=10)
 
         def set_new():
@@ -110,7 +108,7 @@ class EmailGameGUI(tk.Tk):
         self.btnScam.grid(row=0, column=0, padx=5)
         self.btnNotScam.grid(row=0, column=1, padx=5)
 
-        # Next Email button (hidden until an answer is processed)
+        # Next email button (hidden until an answer is processed)
         self.btnNext = tk.Button(
             self.frameAnswer, text="Next Email", width=12, command=self.next_email
         )
@@ -123,43 +121,28 @@ class EmailGameGUI(tk.Tk):
         )
         self.btnQuit.pack()
 
-        # Configure grid resizing behavior
+        #configure grid resizing behavior
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
     def load_current_email(self):
+        #end the game if the target score is reached
         if self.model.get_score() >= 1500:
             messagebox.showinfo("Game Over", f"Game over! Your final score is {self.model.get_score()}")
             controller.reset_progress()
             self.destroy()
             return
 
-        score = self.model.get_score()
-        if score < 500:
-            available_emails = [
-                email for email in self.easy_emails 
-                if getattr(email, "id", email.get_subject()) not in self.asked
-            ]
-        elif score < 1000:
-            available_emails = [
-                email for email in self.medium_emails 
-                if getattr(email, "id", email.get_subject()) not in self.asked
-            ]
-        else:
-            available_emails = [
-                email for email in self.hard_emails 
-                if getattr(email, "id", email.get_subject()) not in self.asked
-            ]
+        #filter available emails based on the current difficulty
+        available_emails = [
+            email for email in controller.select_emails_by_difficulty(self.all_emails, self.current_difficulty)
+            if getattr(email, "id", email.get_subject()) not in self.asked
+        ]
         if not available_emails:
-            # if all emails for the current difficulty have been used, reset the asked list
+            #if no emails available (all have been asked), reset the 'asked' list
             self.asked = []
-            if score < 500:
-                available_emails = self.easy_emails[:]
-            elif score < 1000:
-                available_emails = self.medium_emails[:]
-            else:
-                available_emails = self.hard_emails[:]
+            available_emails = controller.select_emails_by_difficulty(self.all_emails, self.current_difficulty)[:]
 
         self.current_email = random.choice(available_emails)
         content_text = (
@@ -175,6 +158,7 @@ class EmailGameGUI(tk.Tk):
         self.lblScore.config(text=f"Score: {self.model.get_score()}")
 
     def process_answer(self, answer):
+        #check answer using the model
         correct, explanation = self.model.check_answer(answer)
         if correct:
             feedback_text = f"Correct!\nExplanation: {explanation}"
@@ -185,20 +169,35 @@ class EmailGameGUI(tk.Tk):
         self.lblFeedback.config(text=feedback_text)
         self.lblScore.config(text=f"Score: {self.model.get_score()}")
 
-        #record that this email has been asked. Use its unique id if available
+        #record that this email has been asked
         key = getattr(self.current_email, "id", self.current_email.get_subject())
         self.asked.append(key)
 
-        #save progress using the controller
-        controller.save_progress(self.model.get_score(), self.asked)
+        #adjust difficulty: increase on a correct answer, decrease on an incorrect one
+        if correct:
+            if self.current_difficulty.lower() == "easy":
+                self.current_difficulty = "medium"
+            elif self.current_difficulty.lower() == "medium":
+                self.current_difficulty = "hard"
+            #if already "hard", remain "hard"
+        else:
+            if self.current_difficulty.lower() == "hard":
+                self.current_difficulty = "medium"
+            elif self.current_difficulty.lower() == "medium":
+                self.current_difficulty = "easy"
+            #if already "easy", remain "easy"
 
-        #hide answer buttons and show the Next Email button
+        #save progress along with the current difficulty
+        controller.save_progress(self.model.get_score(), self.asked, self.current_difficulty)
+
+        #hide the answer buttons and show the Next Email button
         self.btnScam.grid_remove()
         self.btnNotScam.grid_remove()
         self.btnNext.grid(row=0, column=0, padx=5)
 
     def next_email(self):
-        self.model.next_email()  # Advance model state if needed.
+        # advance the model (if needed) and load the next email
+        self.model.next_email()
         self.load_current_email()
 
 if __name__ == "__main__":
